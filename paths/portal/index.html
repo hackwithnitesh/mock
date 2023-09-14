@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="../ExamPage/media/favicon.ico" type="image/x-icon">
+    <title>Admin | upload Questions</title>
+    <style>
+        .dancers-1 {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+
+        .dancers-1:before,
+        .dancers-1:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: -8px 0 0 -8px;
+            width: 16px;
+            height: 16px;
+            background: #3FB8AF;
+            animation:
+                da1-1 2s infinite,
+                da1-2 .5s infinite;
+        }
+
+        .dancers-1:after {
+            background: #FF3D7F;
+            animation-delay: -1s, 0s;
+        }
+
+        @keyframes da1-1 {
+            0% {
+                top: 0;
+                left: 0
+            }
+
+            25% {
+                top: 100%;
+                left: 0
+            }
+
+            50% {
+                top: 100%;
+                left: 100%
+            }
+
+            75% {
+                top: 0;
+                left: 100%
+            }
+
+            100% {
+                top: 0;
+                left: 0
+            }
+        }
+
+        @keyframes da1-2 {
+
+            80%,
+            100% {
+                transform: rotate(0.5turn)
+            }
+        }
+
+        #loader-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.87);
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div class="dancers-1"></div>
+    </div>
+    <form id="uploadQue">
+        <h1>Upload the Questions</h1>
+        <span id="tt">Subject:</span><input type="text" required id="subject"><br>
+        <span>Quesion</span><input type="text" required name="que1" id="que1"><br>
+        <span>Option1</span><input type="text" required name="opn1" id="opn1">
+        <span>Option2</span><input type="text" required name="opn2" id="opn2">
+        <span>Option3</span><input type="text" required name="opn3" id="opn3">
+        <span>Option4</span><input type="text" required name="opn4" id="opn4"><br><br>
+        <span>Hint</span><input type="text" required name="hint" id="hint">
+        <span>Correct Answar</span>
+        <select name="Answer" required id="correctAns">
+            <option value="Ans1">Ans1</option>
+            <option value="Ans2">Ans2</option>
+            <option value="Ans3">Ans3</option>
+            <option value="Ans4">Ans4</option>
+        </select><br><br><br><br>
+        <input type="submit" id="btn" value="Upload Question">
+    </form>
+    <div id="uploaded_Que">
+        <h3>Uploaded Question</h3>
+        <span>Sr no</span>
+        <span>Question</span>
+        <pre id="arrItem"></pre>
+        <button type="submit" onclick="finalUpload()">Final Upload</button>
+        <button onclick="cancelAll()">Cancel All Uploads</button>
+    </div>
+    <div id="Uploaded-quiz">
+        <h2>Uploaded Quizs</h2>
+        <p><b>Note:</b>You have to login as<i>Admin</i>as well as<i>normal user</i> to access all privileges</p>
+        <table id="quizes">
+            <tr>
+                <th>Sr No.</th>
+                <th>Subject</th>
+                <th>Quiz ID</th>
+                <th>Uploaded Date</th>
+                <th>First Question</th>
+                <th>Action</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        $(window).on('load', function () {
+            $('#loader-wrapper').fadeOut('slow');
+        })
+        var srno = 1;
+        const data = () => {
+            fetch('/exam/questions').then(data => data.json()).then((data) => {
+                data.map(singleArr => {
+                    const quizID = singleArr._id;
+                    const QuizDate = singleArr.Quiz[0].date;
+                    const QuizQue = singleArr.Quiz[0].Que;
+                    const subject = singleArr.Quiz[0].sub
+                    document.getElementById('quizes').innerHTML += `<tr><td>${srno}</td><td>${subject}</td><td>${quizID}</td><td>${QuizDate}</td><td>${QuizQue}</td><td><button class='deleteQuizBtn' id="${quizID}" onclick="deleteQuiz(this.id)">Delete Quiz</button></td></tr>`
+                    srno++;
+                })
+            })
+        };
+        data();
+        // data();
+        function deleteQuiz(ID) {
+            if (confirm('Really want to delete the Quiz')) {
+                // console.log('true');
+                const URL = `/exam/${ID}`
+                fetch(URL, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-type': 'application/json'
+                    }
+                })
+                    .then(response => response.json())
+                    .then((response => {
+                        // console.log(response);
+                        if (response.acknowledged == true) {
+                            location.reload();
+                        }
+                        else {
+                            alert(response);
+                        }
+                    }))
+            }
+        }
+        function cancelAll() {
+            localStorage.clear();
+            location.reload();
+        }
+        var counter = 0;
+        const upload = document.querySelector('#uploadQue');
+        upload.addEventListener('submit', uploadQuestions);
+        async function uploadQuestions(event) {
+            event.preventDefault();
+            document.getElementById('uploaded_Que').style.display = 'block';
+            const subject = document.querySelector("#subject").value
+            const que = document.querySelector('#que1').value;
+            const opn1 = document.querySelector('#opn1').value;
+            const opn2 = document.querySelector('#opn2').value;
+            const opn3 = document.querySelector('#opn3').value;
+            const opn4 = document.querySelector('#opn4').value;
+            const hint = document.querySelector('#hint').value;
+            var value = document.getElementById("correctAns");
+            var gettext = value.options[value.selectedIndex].text;
+            const arr = [subject, que, opn1, opn2, opn3, opn4, hint, gettext]
+            const item = localStorage.setItem(`Que${counter}`, arr)
+            document.getElementById('arrItem').innerHTML += counter + 1 + '          ' + que + "?" + '<br />';
+            counter++
+            if (counter > 4) {
+                upload.style.display = 'none';
+            }
+            document.getElementById('subject').readOnly = true
+            document.querySelector('#que1').value = '';
+            document.querySelector('#opn2').value = '';
+            document.querySelector('#opn3').value = '';
+            document.querySelector('#opn1').value = '';
+            document.querySelector('#opn4').value = '';
+            document.querySelector('#hint').value = '';
+            return counter;
+        }
+        function finalUpload(event) {
+            const getItm = localStorage.getItem('Que0').split(',');
+            const getItm1 = localStorage.getItem('Que1').split(',');
+            const getItm2 = localStorage.getItem('Que2').split(',');
+            const getItm3 = localStorage.getItem('Que3').split(',');
+            const getItm4 = localStorage.getItem('Que4').split(',');
+            const result = fetch('/exam', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    Quiz: [
+                        {
+                            Que: getItm[1],
+                            Ans1: getItm[2],
+                            Ans2: getItm[3],
+                            Ans3: getItm[4],
+                            Ans4: getItm[5],
+                            Hint: getItm[6],
+                            CorrectAns: getItm[7],
+                            sub: getItm[0],
+                        },
+                        {
+                            Que: getItm1[1],
+                            Ans1: getItm1[2],
+                            Ans2: getItm1[3],
+                            Ans3: getItm1[4],
+                            Ans4: getItm1[5],
+                            Hint: getItm1[6],
+                            CorrectAns: getItm1[7],
+                            sub: getItm1[0],
+                        },
+                        {
+                            Que: getItm2[1],
+                            Ans1: getItm2[2],
+                            Ans2: getItm2[3],
+                            Ans3: getItm2[4],
+                            Ans4: getItm2[5],
+                            Hint: getItm2[6],
+                            CorrectAns: getItm2[7],
+                            sub: getItm2[0],
+                        },
+                        {
+                            Que: getItm3[1],
+                            Ans1: getItm3[2],
+                            Ans2: getItm3[3],
+                            Ans3: getItm3[4],
+                            Ans4: getItm3[5],
+                            Hint: getItm3[6],
+                            CorrectAns: getItm3[7],
+                            sub: getItm3[0],
+                        },
+                        {
+                            Que: getItm4[1],
+                            Ans1: getItm4[2],
+                            Ans2: getItm4[3],
+                            Ans3: getItm4[4],
+                            Ans4: getItm4[5],
+                            Hint: getItm4[6],
+                            CorrectAns: getItm4[7],
+                            sub: getItm4[0],
+                        },
+                    ]
+                })
+            }).then((res) => res.json())
+                .then(res => {
+                    if (res.message == 'Success') {
+                        alert('Questions Uploaded SuccessFull !');
+                        localStorage.clear();
+                        location.reload();
+                    } else {
+                        alert(res)
+                        console.log(res);
+                    }
+                })
+        }
+    </script>
+</body>
+
+</html>

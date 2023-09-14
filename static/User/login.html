@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="../media/favicon.ico" type="image/x-icon">
+    <title>Home | Integrated Learning Method</title>
+</head>
+
+<body>
+    <div id="ServerAlert">
+        <p id="alertbox">
+            Alert msg
+        </p>
+    </div>
+    <div class="container">
+        <h2> login </h2>
+        <p id="securityAlert"></p>
+        <div class="form-container"></div>
+        <form id="logform" method="post">
+            <div class="input-name">
+                <i class="fa-solid fa-user lock"></i>
+                <input type="text" placeholder="Username" id="rollno" class="name">
+            </div>
+            <div class="input-name">
+                <i class="fa-solid fa-user lock"></i>
+                <input type="password" placeholder="Password" id="Password" class="text-name">
+            </div>
+
+
+            <div class="input-name">
+                <input type="checkbox" id="cb" class="check-button">
+                <label for="cb" class="check">remember me</label>
+            </div>
+            <div class="input-name">
+                <input type="submit" class="button" value="Login">
+            </div>
+            <div class="registration">
+                <p> Dont have an account?
+                    <a href="Registration.html"> register here</a><br>
+                    <a href="../admin/index.html">admin login</a>
+                </p>
+            </div>
+
+    </div>
+
+    </form>
+    <!-- <input type="button" value="click me" onclick="getCookie()"> -->
+    </div>
+    <br>
+    <br>
+    <script>
+        const form = document.getElementById('logform');
+        form.addEventListener('submit', loginUser);
+        async function loginUser(event) {
+            event.preventDefault();
+            const rollno = document.getElementById('rollno').value;
+            const password = document.getElementById('Password').value;
+
+            const result = await fetch('/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    rollno: rollno,
+                    password: password
+                })
+            }).then((res) => res.json())
+                .then(res => {
+                    if (res.message == 'Success') {
+                        window.location.href = '/'
+                    } else {
+                        document.getElementById('ServerAlert').style.display = 'block';
+                        document.getElementById('alertbox').innerText = res.message;
+                    }
+                });
+        }
+    </script>
+</body>
+
+</html>

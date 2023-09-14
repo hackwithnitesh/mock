@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Registration.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Acme&family=Cormorant+Garamond:ital,wght@1,500&family=Josefin+Sans:wght@700&family=Source+Code+Pro:wght@200&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="../media/favicon.ico" type="image/x-icon">
+    <title>Home | Integrated Learning Method</title>
+</head>
+
+<body>
+    <div id="ServerAlert">
+        <p id="alertbox">
+            Alert msg
+        </p>
+    </div>
+    <div class="container">
+        <h2> Registration form </h2>
+        <div class="form-container"></div>
+        <form id="regform" method="post">
+            <div class="input-name">
+                <i class="fa-solid fa-user lock"></i>
+                <input type="text" placeholder="Full Name" id="name" class="name" required>
+            </div>
+            <div class="input-name">
+                <i class="fa- fa-envelope email"></i>
+                <input type="text" placeholder="Roll No" id="rollno" class="text-name" required>
+            </div>
+            <div class="input-name">
+                <i class="fa- fa-envelope email"></i>
+                <input type="email" placeholder="Email" id="email" class="text-name" required>
+            </div>
+            <div class="input-name">
+                <i class="fa-solid fa-user lock"></i>
+                <input type="password" placeholder="Password" id="password" class="text-name" required>
+            </div>
+
+            <div class="input-name">
+                <i class="fa-solid fa-user lock"></i>
+                <input type="password" placeholder="Confirm Password" id="conformPass" class="text-name" required>
+            </div>
+            <div class="input-name">
+                <i class="fa-solid fa-user lock"></i>
+                <select id="semester" class="country" required>
+                    <option>Select Semester</option>
+                    <option id="eight">1</option>
+                    <option id="eight">2</option>
+                    <option id="eight">3</option>
+                    <option id="eight">4</option>
+                    <option id="eight">5</option>
+                    <option id="eight">6</option>
+                    <option id="eight">7</option>
+                    <option id="eight">8</option>
+                </select>
+                <div class="arrow"></div>
+            </div>
+            <div class="input-name">
+                <input type="checkbox" checked name="cb" id="remindme" required>
+                <label>I accept the terms and conditions</label>
+            </div>
+            <div class="input-name">
+                <input type="submit" class="button" value="Register">
+            </div>
+            already have account?<a href="login.html">login</a>
+    </div>
+    </form>
+    </div>
+    <script>
+        const form = document.getElementById('regform');
+        form.addEventListener('submit', RegisterUser);
+        async function RegisterUser(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const rollno = document.getElementById('rollno').value;
+            const email = document.getElementById('email').value;
+            const e = document.getElementById("semester");
+            const sem = e.options[e.selectedIndex].value;
+            const password = document.getElementById('password').value;
+            const result = fetch('/user/register', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    rollno: rollno,
+                    email: email,
+                    sem: sem,
+                    password: password
+                })
+            }).then((res) => res.json())
+                .then(res => {
+                    const ServerResponce = res.message;
+                    let alertbox = document.getElementById('alertbox');
+                    let ServerAlert = document.getElementById('ServerAlert');
+                    if (ServerResponce == 'Success') {
+                        location.href = '/'
+                    }
+                    else {
+                        document.getElementById('ServerAlert').style.display = "block";
+                        alertbox.innerText = res.message;
+                        alertbox.style.color = 'red';
+                        ServerAlert.style.border = '2px solid red';
+                    }
+                    // if (ServerResponce === 'User Register Successfull Please Login') {
+                    //     document.getElementById('ServerAlert').style.display = "block";
+                    //     alertbox.innerText = res.message;
+                    //     alertbox.style.color = 'blue';
+                    //     ServerAlert.style.border = '2px solid blue';
+                    // }
+                    // else {
+                    //     document.getElementById('ServerAlert').style.display = "block";
+                    //     alertbox.innerText = res.message;
+                    // }
+                })
+        }
+    </script>
+</body>
+
+</html>

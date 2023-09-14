@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .dancers-1 {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+
+        .dancers-1:before,
+        .dancers-1:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: -8px 0 0 -8px;
+            width: 16px;
+            height: 16px;
+            background: #3FB8AF;
+            animation:
+                da1-1 2s infinite,
+                da1-2 .5s infinite;
+        }
+
+        .dancers-1:after {
+            background: #FF3D7F;
+            animation-delay: -1s, 0s;
+        }
+
+        @keyframes da1-1 {
+            0% {
+                top: 0;
+                left: 0
+            }
+
+            25% {
+                top: 100%;
+                left: 0
+            }
+
+            50% {
+                top: 100%;
+                left: 100%
+            }
+
+            75% {
+                top: 0;
+                left: 100%
+            }
+
+            100% {
+                top: 0;
+                left: 0
+            }
+        }
+
+        @keyframes da1-2 {
+
+            80%,
+            100% {
+                transform: rotate(0.5turn)
+            }
+        }
+
+
+        #loader-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.87);
+            height: 100vh;
+            width: 100%;
+            position: fixed;
+            z-index: 100;
+        }
+    </style>
+    <title>Integrated Learning tool | Home</title>
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div class="dancers-1"></div>
+    </div>
+
+
+    <nav class="nav">
+        <ul class="nav__list">
+            <a href="#home" class="nav__link active-link">
+                <i class="ri-home-5-line"></i>
+                <span class="nav__name">
+                    Home
+                </span>
+            </a>
+
+            <a href="#Instruction" class="nav__link">
+                <i class="ri-ball-pen-line"></i>
+                <span class="nav__name">
+                    Instruction
+                </span>
+            </a>
+
+            <a href="#exam" class="nav__link">
+                <i class="ri-book-fill"></i>
+                <span class="nav__name">
+                    Exam
+                </span>
+            </a>
+
+
+            <a href="#about" class="nav__link">
+                <i class="ri-building-line"></i>
+                <span class="nav__name">
+                    About us
+                </span>
+            </a>
+            <a href="#home" class="nav__link">
+                <i class="ri-user-line"></i>
+                <span class="nav__name">
+                    Acount
+                </span>
+            </a>
+
+
+            <svg class="indicator" width="94" height="56" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="47" cy="28" rx="24" ry="28" />
+                <path d="M24 20C24 20 28 55.9999 48 56L0 55.9997C18 55.9998 24 20 24 20Z" />
+                <path d="M70 20C70 20 66 55.9999 46 56L94 55.9997C76 55.9998 70 20 70 20Z" />
+            </svg>
+        </ul>
+    </nav>
+
+    <!--=============== MAIN ===============-->
+    <main class="container">
+        <section id="home">
+            <div class="homemenu">
+                <div class="logo">
+                    <img src="media/mylogo.png" alt="wait" height="90px" width="100px">
+                </div>
+                <div class="account">
+                    <a href="User/login.html"><input type="button" value="Log In" id="Ubtn"></a>
+                    <a href="/adminPanel/index.html"><input type="button" style="display: none;" value="Admin portal"
+                            id="Abtn"></a>
+                </div>
+            </div>
+            <div id="title">
+                <div class="titleHead">
+                    <h1 id="introHead">Intigrated Learning tool</h1>
+                </div>
+                <div class="para">
+                    <p id="myppara">Lorem ipsum dolor sit amet consectetur ibus perspiciatis perferendis quibusdam
+                        laboriosam dolorem explicabo doloremque voluptatum nisi repellat aliquam exercitationem fuga
+                        molestias. Repudiandae, nulla!</p>
+                </div>
+                <div class="gotobtn">
+                    <a href="#exam"><input type="button" value="Start pratice" id="btn1"></a>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section id="Instruction">
+            <div class="myinstruction">
+                <h1><b>Instruction</b></h1><br>
+                <p><b>1)You cant's start exam until you have account</b></p>
+                <p><b>2)Integrated Learning Method is a method of learning the best of online exam</b></p>
+                <p><b>3)Quiz is available for FE(Fuctional english), CG(Computer Graghics,SEPM(Software engineering and
+                        project),<br><br>(Embedded system design),SSD(soft skills development) and CN(Computer
+                        Network)</b>
+                </p>
+                <p><b>4)Each subject have 10 levels (10 Quizs) </b></p>
+                <p><b>5)Hardness of Quesion increases with levels</b></p>
+                <p><b>6)Each quiz have 20 questions each quesion carry one mark (totol 20 marks)</b></p>
+                <p><b>7)Result will shown after attempting 20 questions</b></p>
+                <p><b>8)Integrated Learning Method is a quiz based programm </b></p>
+                <br>
+                <p><b></b></p>
+                <a href="#exam"><button id="btn">Start Quiz</button></a>
+            </div>
+        </section>
+        <hr>
+        <section id="exam">
+            <!-- <h2>Exam</h2> -->
+            <h1>Start Preparing Now</h1><br><br>
+            <label id="lbl" for="subject">Available tests</label>
+            <select name="Subject" id="subject">
+                <!-- dynamic <option> tag -->
+            </select><br><br>
+            <button onclick="StartExamNow()" id="startBtn">Start Exam</button>
+        </section>
+        <hr>
+        <section id="about">
+            <!-- <h2>About</h2> -->
+            <h1>About us</h1><br><br>
+            <p>"INTEGRATED LEARNING SYSTEAM" are software solutions designed to deliver content.the effective deliver of
+                that content is measured,monitored,and maintained with array of assessment and management tools.IN
+                "INTEGRATED LEARNING SYSTEAM" provides multiple choice question (MCQs) releated to the engineering
+                studies.In this you are allow to select your semester and subject for your mock test and then you can
+                start your test.you will have to read question and click over the correct answer.If you are not sure
+                about the answer then you can use link or pdf which we will provide in "INTEGRATED LEARNING METHOD".and
+                you can use Next button to see the next question in the quize.And at last you can submit your text and
+                see your result.</p>
+            <p>This is a website which are made by jayesh,nitesh,pragati,badal,pragati for learning purpose.which help
+                the student to give good pratice,proper time management ,claer doudts,gives a feeling of actual exam and
+                helps to know how to use time efficientle."THANKS YOU FOR VISITING YOUR WEBSITE".</p><br><br>
+            <div class="footer-main">
+                <div class="footerinfo">
+                    <h3>Terms and Conditions | Privacy Policy |Security</h3><br>
+                    <p><i class="bi bi-geo-alt-fill"></i>111 main road , parsoda ramtek 441106 , MH </p><br>
+                    <p><i>©</i>2022 Designed and Developed by <a href="#">Team Li-fi</a></p><br>
+                </div>
+                <!-- <div class="footerlinks" id="footer"> -->
+                <div class="footerlinks" id="footer">
+                    <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.twitter.com/"><i class="bi bi-twitter"></i></a>
+                    <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.youtube.com/"><i class="bi bi-youtube"></i></a>
+                    <a href="https://www.linkedin.com/"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.google.com/"><i class="bi bi-google"></i></a>
+                    <a href="https://www.pinterest.com/"><i class="bi bi-pinterest"></i></a>
+                </div>
+                <!-- </div> -->
+            </div>
+            <h4>YOUR FEEDBACK</h4>
+            <textarea name="comments" id="textarea"></textarea><br>
+            <input type="button" value="Send Feedback" id="btn1">
+        </section>
+    </main>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="assets/js/main.js"></script>
+    <script>
+        $(window).on('load', function () {
+            $('#loader-wrapper').fadeOut('slow');
+        })
+
+        const itemArr = [];
+        var count = 0;
+        fetch('/exam/questions')
+            .then(res => res.json())
+            .then((res) => {
+                res.map(arr => {
+                    var item = arr.Quiz[0].sub;
+                    var datedOn = arr.Quiz[0].date.slice(0, 10);
+                    document.getElementById('subject').innerHTML += `<option value='${count}' id='${item}'>${item}(${datedOn})</option>`;
+                    count++;
+                })
+            })
+        function StartExamNow() {
+            var UserCookie = getCookie('authtoken');
+            if (UserCookie == null) {
+                window.location.href = '/User/login.html'
+            }
+            // for subject
+            var value = document.getElementById("subject");
+            var getvalue = value.options[value.selectedIndex].value;
+            var gettext = value.options[value.selectedIndex].text;
+            var SessionArray = [gettext, getvalue];
+            console.log(SessionArray);
+            sessionStorage.setItem('incomingArr', JSON.stringify(SessionArray));
+            location.href = '/exam/index.html'
+        }
+
+        // coockies--------------------------------------------
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+        var UserCookie = getCookie('authtoken');
+        var adminCookie = getCookie('adminAuth');
+        if (UserCookie == null) {
+            console.log('Need to login');
+        }
+        else {
+            document.getElementById('Ubtn').style.display = 'none'
+        }
+        if (adminCookie == null) {
+            console.log('Admin NEDD to login');
+        } else {
+            document.getElementById('Ubtn').style.display = 'none'
+            document.getElementById('Abtn').style.display = 'block'
+        }
+        // ---------------------------------------------------------------------
+    </script>
+</body>
+
+</html>

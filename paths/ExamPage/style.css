@@ -1,0 +1,413 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+/* nav */
+.nav-container {
+    background-color: rgba(144, 230, 132, 0.774);
+    color: rgba(0, 0, 0, 0.849);
+    /* display: flex; */
+    justify-content: space-between;
+    /* padding: 20px; */
+}
+
+#heading h1 {
+    font-size: 30px;
+}
+
+#myname h4,
+#mysubject h4,
+#mylevel p {
+    padding: 10px 0px 5px 0px;
+}
+
+#btnStartAgain,
+#btnHome,
+#examDetail {
+    height: 40px;
+    width: 100px;
+    background-color: #5a5ad5cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+#nevigationBtn {
+    padding: 10px;
+}
+
+.examInfo{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+#endexambtn {
+    margin-top: 10px;
+    padding: 10px;
+    width: 110px;
+    cursor: pointer;
+    background-color: rgba(187, 11, 11, 0.466);
+    border: none;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+#endexambtn:hover {
+    background-color: rgba(201, 17, 17, 0.726);
+}
+
+#dark-mode {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    height: 40px;
+    width: 110px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: rgba(17, 15, 15, 0.267);
+}
+
+#dark-mode:hover {
+    color: wheat;
+    background-color: rgba(17, 15, 15, 0.808);
+}
+
+#dark-mode i {
+    height: 40px;
+    width: 40px
+}
+i{
+    padding: 10px;
+}
+
+/* body */  
+
+.main-con {
+    background-color: rgba(120, 191, 209, 0.548);
+    color: rgb(216, 212, 204);
+    display: block;
+    /* height: auto; */
+    padding: 100px 300px 200px 300px;
+}
+
+.showresult {
+    height: 77vh;
+    background-color: rgba(120, 191, 209, 0.548);
+    color: rgb(216, 212, 204);
+    display: none;
+    /* height: auto; */
+    padding: 100px 300px 100px 300px;
+}
+
+.checkAns {
+    height: auto;
+    background-color: rgba(120, 191, 209, 0.548);
+    color: rgb(216, 212, 204);
+    display: none;
+    /* height: auto; */
+    padding: 10px 300px 10px 300px;
+}
+
+.question {
+    margin: 20px 50px auto 30px;
+}
+
+#Que {
+    padding: 0px;
+    word-break: break-all;
+    color: black;
+
+}
+
+.queNo {
+    display: flex;
+}
+
+.item1 {
+    border: 10px solid green;
+    border-radius: 5px;
+    width: 30px;
+    align-self: center;
+
+}
+
+.item2 {
+    border: 1px solid black;
+    color: black;
+    border-radius: 20px;
+    width: 250px;
+    padding: 15px 10px 15px 10px;
+    background-color: rgba(214, 228, 218, 0.637);
+}
+
+.item3 {
+    border: 10px solid green;
+    border-radius: 5px;
+    width: 100%;
+    align-self: center;
+}
+
+#QueNum {
+    color: rgba(0, 0, 0, 0.705);
+}
+
+.box {
+    font-family: 'Source Serif Pro', serif;
+    justify-content: center;
+    background-color: rgba(214, 228, 218, 0.637);
+    display: flex;
+    flex-wrap: nowrap;
+    height: auto;
+    border-radius: 10px;
+}
+
+.correctAns {
+    background-color: rgba(214, 228, 218, 0.637);
+    font-family: 'Source Serif Pro', serif;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    border-radius: 10px;
+    /* padding: 10px 300px; */
+    margin: 10px 300px;
+}
+
+.correctAns h2,
+.correctAns h5,
+.correctAns label {
+    color: rgba(0, 0, 0, 0.741);
+}
+
+.checkAns {
+    height: auto;
+    background-color: rgba(120, 191, 209, 0.548);
+    color: rgb(216, 212, 204);
+    padding: 10px;
+}
+
+li {
+    border-radius: 20px;
+    width: 450px;
+    height: auto;
+    word-wrap: break-word;
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+    text-decoration: none;
+    list-style: none;
+    box-shadow: 0px 0px 5px rgba(25, 60, 80, 0.575);
+    color: rgba(0, 0, 0, 0.836);
+}
+
+#try {
+    background-color: red;
+}
+
+@media(max-width:1200px) {
+    li {
+        width: 350px;
+        margin: 20px;
+        margin: 0px;
+    }
+
+    .correctAns {
+        margin: 0px;
+    }
+    .showresult{
+        padding: 0px;
+        height: auto;
+    }
+}
+
+#show {
+    background-color: rgba(214, 228, 218, 0.637);
+    font-family: 'Source Serif Pro', serif;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: nowrap; */
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.correctAns {
+    background-color: rgba(214, 228, 218, 0.637);
+    font-family: 'Source Serif Pro', serif;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: nowrap; */
+    height: auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#nevigationBtn {
+    display: flex;
+    justify-content: space-around;
+}
+
+#show h2,
+#show h4 {
+    color: rgba(0, 0, 0, 0.649);
+}
+
+.buttons {
+    display: block;
+    float: right;
+}
+
+.boxbox {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+
+li {
+    border-radius: 20px;
+    width: 450px;
+    height: auto;
+    word-wrap: break-word;
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+    text-decoration: none;
+    list-style: none;
+    box-shadow: 0px 0px 5px rgba(25, 60, 80, 0.575);
+    color: rgba(0, 0, 0, 0.836);
+}
+
+.buttons {
+    justify-content: space-between;
+}
+
+#previous,
+#submit {
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(48, 111, 163, 0.521);
+    font-size: 20px;
+    margin: 10px;
+    width: 120px;
+    padding: 15px;
+}
+
+#previous:hover,
+#submit:hover {
+    background-color: rgba(21, 168, 253, 0.884);
+}
+
+#heading-short {
+    display: none;
+}
+
+
+/* footer */
+
+
+@media(max-width:1200px) {
+    .nav-container {
+        padding: 5px;
+    }
+
+    #heading h1 {
+        font-size: 17px;
+    }
+
+    #myname h4,
+    #mysubject h4,
+    #mylevel p {
+        font-size: 13px;
+        padding-top: 0px;
+    }
+    .endexam {
+        font-size: 10px;
+        align-self: center;
+    }
+
+    #heading img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .home-body {
+        flex-wrap: wrap;
+    }
+
+    .Quote {
+        margin: 30px 0px 30px 0px;
+    }
+
+    .Quote h2 {
+        font-size: 30px;
+    }
+
+    .main-con {
+        padding: 0px
+    }
+
+    .box {
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .option {
+        padding: 10px;
+        font-size: 10px;
+    }
+
+    li {
+        width: 350px;
+        margin: 20px;
+    }
+
+    #heading-short {
+        display: block;
+    }
+
+    #heading {
+        display: none;
+    }
+    #shortHeading{
+        font-size: large;
+    }
+    #endexambtn{
+        /* margin-top: 10px; */
+        padding: 4px;
+        width: 60px;
+        cursor: pointer;
+        background-color: rgba(187, 11, 11, 0.466);
+        border: none;
+        font-family: 'Source Serif Pro', serif;
+        font-size: 12px;
+        border-radius: 5px;
+    }
+    .examInfo{
+        padding: 5px;
+    }
+}

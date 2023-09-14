@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    --body-font: 'Poppins', sans-serif;
+    font-family: var(--body-font);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+/* css for header part  */
+
+.nav-container{
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(98, 231, 65, 0.678);
+}
+
+h3{
+    color: black;
+    font-size: 30px;
+    padding: 20px;
+}
+.button-div{
+    padding: 20px;
+}
+#btn,#togglebtn,#aboutus{
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 130px;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+#btn:hover,#togglebtn:hover{
+    background-color: rgb(15, 206, 41)
+}
+
+/* body part Css goes here  */
+
+body{
+    font-size: 14px;
+    background:rgb(254, 255, 254); 
+   
+}
+.container
+{
+    background: rgb(255, 255, 255);
+    width: 500px;
+    padding: 25px;
+    margin: 20px auto 0;
+    border-top: 5px solid #5a5ad5cc;
+    box-shadow: 0 0 7px 5px rgba(129, 130, 163, 0.2);
+}
+
+.container h2 {
+    font-size:24px;
+    line-height:24px;
+    padding: 30px;
+    text-align: center;
+}
+.input-name
+{
+    width: 90%;
+    position: relative;
+    margin: 20px auto;
+}
+.name{
+    width:100%;
+    padding: 8px 0 8px 40px;
+}
+
+ .text-name
+ {
+     width:100%;
+     padding: 8px 0 8px 40px;
+ 
+ }
+ .text-name, .name {
+ border: 1px solid #424141;
+ outline:none;
+ -webkit-transition: all 0.30s ease-in-out;
+ -moz-transition : all 0.30s ease-in-out;
+ -ms-transition: all 0.30s ease-in-out;
+ transition: all 0.30s ease-in-out;
+ 
+ 
+ }
+ .text-name:hover, .name:hover
+ {
+     background-color: #f8f5f5;
+ }  
+ .text-name:focus, .name:focus
+ {
+     border: 1px solid blue;
+ }
+
+.button
+{
+    height: 40px;
+    width: 100%;
+    background-color: #5a5ad5cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+
+}
+#ServerAlert {
+    display: none;
+    text-align: center;
+    margin: 10px 500px 0px 500px;
+    padding: 20px;
+    color: rgba(236, 22, 22, 0.812);
+    border: 2px solid rgba(182, 37, 37, 0.685);
+    border-radius: 5px;
+
+}
+
+.button:hover
+{
+    background: rgb(37, 107, 213);
+}
+.registration
+{
+    width: 90%;
+    position: relative;
+    margin: 20px auto;
+    text-align:center;
+    
+}
+.securityAlert{
+    color: red;
+    background-color: rgb(190, 116, 116);
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+@media(max-width:480px)
+{
+    .container
+    {
+        width:100%;
+        border: 2px solid rgb(115, 224, 124);
+        padding: 5px;
+    }
+    .input-name{
+        margin-bottom: -10px;
+    }
+    .name{
+        width:100%;
+        padding: 8px 0 8px 40px; 
+        margin-bottom: 10px;
+    }
+    .input-name span
+    {padding: 0;
+    margin: 0;
+}
+.form-container
+{
+   border:2px solid;
+   width: 100%;
+}
+}
+/* css for footer part   */
+
+.footer-main{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(98, 231, 65, 0.678);}
+select{
+    padding: 7px;
+    width: 150px;
+}
+i{
+    padding: 10px;
+}
+i:hover{
+    color: rgba(18, 15, 226, 0.664);
+}
+
+@media(max-width:800px){
+    h3{
+        font-size: 20px;
+    }
+    .nav-container{
+        height: 100px;
+    }
+    .home-body{
+        padding: 20px 0px 20px 0px;
+        height: auto;
+        flex-wrap: wrap;
+    }
+    .Quote{
+        margin: 70px 5px 70px 5px;
+    }
+    .Quote h2{
+        font-size: 30px;
+    }
+    .footerinfo h2{
+        font-size: 13px;
+    }
+    .footerinfo p i{
+        padding: 5px;
+    }
+    .footerinfo p {
+    font-size: 10px;
+    }
+    .button-div{
+        padding: 10px;
+    }
+    #btn,#togglebtn,#aboutus{
+        background-color: rgba(39, 144, 230, 0.664);
+        border-radius: 5px;
+        color: white;
+        border: none;
+        width: 90px;
+        padding: 8px;
+        margin: 5px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+}

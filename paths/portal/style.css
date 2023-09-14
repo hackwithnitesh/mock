@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+* {
+    padding: 10px;
+    top: 0px;
+    left: 0px;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+#uploadQue{
+    text-align: center;
+}
+input{
+    border-radius: 5px;
+}
+input:focus{
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0px 0px 3px blue;
+}
+#btn{
+    background-color: #3fb8b0aa;
+    border: none;
+    cursor: pointer;
+}
+#btn:hover{
+    background-color: rgb(26, 123, 243);
+}
+
+#que1,
+#que2,
+#que3,
+#que4,
+#que5 {
+    width: 830px;
+    margin: 20px;
+}
+#uploaded_Que{
+    display: none;
+}
+select {
+    width: 200px;
+}
+.deleteQuizBtn {
+    background-color: rgba(240, 10, 10, 0.711);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.deleteQuizBtn:hover {
+    background-color: red;
+}
